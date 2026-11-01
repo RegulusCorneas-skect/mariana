@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17152b">
+  <meta name="description" content="Una pequeña sorpresa, hecha con mucho amor.">
+  <title>Una sorpresa para ti ♡</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --night: #17152b;
+      --night-soft: #211a36;
+      --rose: #f1a49c;
+      --cream: #fff8ed;
+      --muted: #c7bbcb;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Trebuchet MS", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--cream);
+      font-family: var(--sans);
+      background:
+        radial-gradient(ellipse at 50% 17%, #392344 0%, var(--night-soft) 30%, var(--night) 70%);
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      background-image:
+        radial-gradient(1px 1px at 13% 22%, white 98%, transparent),
+        radial-gradient(1px 1px at 75% 11%, #f5c7b3 98%, transparent),
+        radial-gradient(1px 1px at 90% 56%, white 98%, transparent),
+        radial-gradient(1px 1px at 22% 72%, #f5c7b3 98%, transparent),
+        radial-gradient(1px 1px at 64% 82%, white 98%, transparent),
+        radial-gradient(1px 1px at 42% 35%, white 98%, transparent);
+      background-size: 420px 390px;
+    }
+
+    main {
+      position: relative;
+    }
+
+    .welcome {
+      position: relative;
+      display: flex;
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 44px 22px 36px;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .top-note,
+    .eyebrow {
+      color: #d6c6d1;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+    }
+
+    .top-note {
+      margin: 8px 0 36px;
+    }
+
+    .sparkle {
+      margin-right: 8px;
+      color: var(--rose);
+      font-size: 13px;
+    }
+
+    .hero-heart {
+      display: grid;
+      width: 92px;
+      height: 92px;
+      margin-bottom: 23px;
+      border: 1px solid #f1a49c5e;
+      border-radius: 50%;
+      place-items: center;
+      box-shadow: 0 0 55px #f1a49c19;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .hero-heart span {
+      color: var(--rose);
+      font: 58px/1 var(--serif);
+      transform: translateY(-2px);
+    }
+
+    .hello {
+      margin: 0 0 10px;
+      color: var(--rose);
+      font: italic 18px var(--serif);
+    }
+
+    h1 {
+      margin: 0;
+      font: 500 clamp(50px, 8vw, 86px)/0.99 var(--serif);
+      letter-spacing: -0.055em;
+    }
+
+    h1 em {
+      color: var(--rose);
+      font-weight: 400;
+    }
+
+    .lead {
+      max-width: 390px;
+      margin: 22px auto 27px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .open-letter {
+      display: flex;
+      min-width: 245px;
+      padding: 16px 20px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border: 0;
+      border-radius: 3px;
+      color: #35243b;
+      background: #f9e7dc;
+      box-shadow: 0 9px 35px #09091435;
+      cursor: pointer;
+      font: 600 11px var(--sans);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .open-letter:hover {
+      background: #fff2e8;
+      transform: translateY(-2px);
+    }
+
+    .button-heart {
+      color: #c46573;
+      font-size: 17px;
+    }
+
+    .arrow {
+      font-size: 14px;
+    }
+
+    .scroll-note {
+      position: absolute;
+      bottom: 24px;
+      margin: 0;
+      color: #978a9f;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+    }
+
+    .letter-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 46px 24px 76px;
+      animation: appear 0.7s ease both;
+    }
+
+    .letter-card {
+      position: relative;
+      color: #382a3c;
+      background: var(--cream);
+      box-shadow: 0 22px 80px #07071170;
+      transform: rotate(-1deg);
+    }
+
+    .letter-top,
+    .letter-bottom {
+      display: flex;
+      padding: 19px 24px;
+      justify-content: space-between;
+      gap: 10px;
+      color: #997784;
+      font-size: 8px;
+      letter-spacing: 0.16em;
+    }
+
+    .letter-top {
+      border-bottom: 1px solid #e8d8d0;
+    }
+
+    .letter-top span:last-child {
+      color: #c56b78;
+      font-size: 15px;
+    }
+
+    .letter-body {
+      padding: 35px clamp(25px, 8vw, 75px) 32px;
+      font: 16px/1.9 var(--serif);
+    }
+
+    .letter-body p {
+      margin: 0 0 17px;
+    }
+
+    .letter-greeting {
+      color: #a65f70;
+      font-style: italic;
+    }
+
+    .letter-signoff {
+      padding-top: 8px;
+      color: #6d4559;
+    }
+
+    .letter-signoff span {
+      margin-left: 5px;
+      color: #c56b78;
+      font-size: 22px;
+    }
+
+    .letter-bottom {
+      border-top: 1px solid #e8d8d0;
+      font-size: 7px;
+    }
+
+    .reason-card {
+      padding: 42px 15px 12px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: #bbaabf;
+    }
+
+    .reason {
+      margin: 13px 0 17px;
+      color: var(--rose);
+      font: italic clamp(28px, 5vw, 42px) var(--serif);
+    }
+
+    .another-reason {
+      padding: 8px 2px;
+      border: 0;
+      border-bottom: 1px solid #8c7388;
+      color: #e1d5dd;
+      background: transparent;
+      cursor: pointer;
+      font: 10px var(--sans);
+    }
+
+    .another-reason span {
+      padding-left: 12px;
+      color: var(--rose);
+    }
+
+    .end-note {
+      margin: 38px 0 0;
+      color: #d8c8d5;
+      text-align: center;
+      font: italic 17px var(--serif);
+    }
+
+    .end-note span {
+      padding-left: 6px;
+      color: var(--rose);
+      font-style: normal;
+    }
+
+    footer {
+      position: relative;
+      padding: 18px 10px 24px;
+      color: #81758f;
+      text-align: center;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+    }
+
+    footer span {
+      color: var(--rose);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @keyframes pulse {
+      50% {
+        box-shadow: 0 0 70px #f1a49c36;
+        transform: scale(1.035);
+      }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .welcome {
+        padding-top: 32px;
+      }
+
+      .top-note {
+        margin-bottom: 48px;
+        font-size: 7px;
+      }
+
+      .hero-heart {
+        width: 78px;
+        height: 78px;
+      }
+
+      .hero-heart span {
+        font-size: 49px;
+      }
+
+      .lead {
+        max-width: 310px;
+        font-size: 12px;
+      }
+
+      .letter-section {
+        padding-right: 17px;
+        padding-left: 17px;
+      }
+
+      .letter-body {
+        padding-top: 28px;
+        font-size: 15px;
+      }
+
+      .letter-top,
+      .letter-bottom {
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 7px;
+      }
+
+      .letter-bottom {
+        font-size: 6px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <main>
+    <section class="welcome" aria-labelledby="title">
+      <p class="top-note">
+        <span class="sparkle">✳</span>
+        UNA NOTITA PARA ALGUIEN MUY ESPECIAL
+      </p>
+
+      <div class="hero-heart" aria-hidden="true"><span>♡</span></div>
+      <p class="hello">Hola, amor</p>
+      <h1 id="title">Hice esto<br>pensando en <em>ti.</em></h1>
+
+      <p class="lead">
+        Porque hay personas que hacen que cualquier día se sienta un poquito más bonito.
+      </p>
+
+      <button
+        class="open-letter"
+        id="open-letter"
+        aria-expanded="false"
+        aria-controls="letter"
+      >
+        <span class="button-heart">♡</span>
+        Hay algo que quiero decirte
+        <span class="arrow">↓</span>
+      </button>
+
+      <p class="scroll-note">HECHO CON CARIÑO, PARA TI</p>
+    </section>
+
+    <section class="letter-section" id="letter" hidden>
+      <article class="letter-card">
+        <div class="letter-top">
+          <span>PARA TI, CON TODO MI CARIÑO</span>
+          <span>♡</span>
+        </div>
+
+        <div class="letter-body">
+          <p class="letter-greeting">Mi persona favorita:</p>
+          <p>
+            Solo quería recordarte que me encanta compartir la vida contigo.
+            Gracias por tus risas, tu compañía y por hacer especiales hasta los
+            momentos más sencillos.
+          </p>
+          <p>
+            Ojalá esta página te saque una sonrisa, como tú tantas veces sacas
+            la mía.
+          </p>
+          <p class="letter-signoff">Te amo mucho mi amor <span>♡</span></p>
+        </div>
+
+        <div class="letter-bottom">
+          <span>UNA SORPRESA PEQUEÑITA</span>
+          <span>CON AMOR, SIEMPRE</span>
+        </div>
+      </article>
+
+      <div class="reason-card">
+        <p class="eyebrow">Y POR SI HOY NO TE LO HABÍA DICHO…</p>
+        <p class="reason" id="reason">Me haces bien.</p>
+        <button class="another-reason" id="another-reason">
+          Otra razón <span>↗</span>
+        </button>
+      </div>
+
+      <p class="end-note">
+        Qué suerte la mía de coincidir contigo <span>✳</span>
+      </p>
+    </section>
+  </main>
+
+  <footer>UNA PÁGINA HECHA CON <span>♥</span></footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const openButton = document.querySelector("#open-letter");
+      const letter = document.querySelector("#letter");
+      const reason = document.querySelector("#reason");
+
+      const reasons = [
+        "Me haces bien.",
+        "Contigo, lo cotidiano tiene algo especial.",
+        "Tu compañía es de mis lugares favoritos.",
+        "Siempre me sacas una sonrisa.",
+        "Qué bonito es compartir contigo."
+      ];
+
+      let reasonIndex = 0;
+
+      openButton.addEventListener("click", () => {
+        letter.hidden = false;
+        openButton.setAttribute("aria-expanded", "true");
+        openButton.innerHTML =
+          '<span class="button-heart">♡</span> Una notita para ti <span class="arrow">↑</span>';
+
+        letter.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+
+      document.querySelector("#another-reason").addEventListener("click", () => {
+        reasonIndex = (reasonIndex + 1) % reasons.length;
+        reason.textContent = reasons[reasonIndex];
+      });
+    });
+  </script>
+</body>
+</html>
